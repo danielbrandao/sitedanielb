@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Aceleração de Carreira V2 | SuperDados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* 👑 PALETA OBSIDIAN & GOLD PREMIUM */
+        :root {
+            --bg-deep: #050508;
+            /* Fundo preto absoluto/obsidiana */
+            --bg-surface: rgba(15, 15, 23, 0.7);
+            /* Fundo dos cards para glassmorphism */
+            --gold-primary: #d4af37;
+            /* Ouro clássico metálico */
+            --gold-light: #f3e5ab;
+            /* Ouro claro brilhante */
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --texto-puro: #ffffff;
+            --texto-premium: #f3f4f6;
+            /* Off-white */
+            --texto-dim: #9ca3af;
+            /* Cinza discreto */
+            --borda-premium: rgba(212, 175, 55, 0.12);
+            /* Borda dourada sutil */
+            --borda-glass: rgba(255, 255, 255, 0.05);
+            --fonte-luxo: 'Plus Jakarta Sans', sans-serif;
+            --glow-green: rgba(34, 197, 94, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--texto-premium);
+            font-family: var(--fonte-luxo);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 🧭 NAV PREMIUM */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(5, 5, 8, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--borda-glass);
+            z-index: 1000;
+        }
+
+        header .container {
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--texto-puro);
+        }
+
+        .logo span {
+            color: var(--gold-primary);
+            background: linear-gradient(90deg, #08e9ff, #020a1ac2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav ul a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--texto-dim);
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul a:hover {
+            color: var(--gold-primary);
+        }
+
+        .btn-nav {
+            border: 1px solid var(--gold-primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            background: transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .btn-nav:hover {
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+            color: var(--bg-deep);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* 👑 HERO 2 COLUNAS */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 120px;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.07), transparent 45%),
+                radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.04), transparent 50%);
+        }
+
+        .grid-hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .tag-lux {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.06);
+            color: var(--gold-light);
+            border: 1px solid var(--borda-premium);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .tag-lux::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background-color: var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--gold-primary);
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+            background: linear-gradient(180deg, #ffffff 30%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--gold-primary), #fef08a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitulo {
+            font-size: 18px;
+            color: var(--texto-dim);
+            margin-bottom: 48px;
+            max-width: 620px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* 🟢 BOTÃO WHATSAPP ALTO IMPACTO */
+        .btn-premium-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: #22c55e;
+            color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.35);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium-cta:hover {
+            background: #16a34a;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.5);
+        }
+
+        /* MOCKUP CONTAINER HERO (DIREITA) */
+        .hero-art-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-lux-card {
+            width: 100%;
+            height: 480px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--borda-glass);
+            border-radius: 32px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: visible;
+        }
+
+        .hero-lux-card::after {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-lux-card .hero-image-bg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: url("img/Daniel office.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            border-radius: 32px;
+            opacity: 0.65;
+        }
+
+        .badge-floating {
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid var(--borda-premium);
+            padding: 12px 18px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        .badge-floating .badge-icon {
+            width: 18px;
+            height: 18px;
+            display: block;
+            flex: 0 0 18px;
+            fill: currentColor;
+        }
+
+        .badge-floating .badge-text {
+            color: #fff;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .badge-floating {
+            position: absolute;
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid var(--borda-premium);
+            padding: 16px 24px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 40px;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .badge-2 {
+            bottom: 60px;
+            right: -20px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* 📈 SEÇÃO ESTATÍSTICAS */
+        .stats-bar {
+            padding: 60px 0;
+            background: rgba(10, 10, 15, 0.5);
+            border-top: 1px solid var(--borda-glass);
+            border-bottom: 1px solid var(--borda-glass);
+        }
+
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--gold-primary), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            color: var(--texto-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* 🃏 GLASSMORPHISM CARDS (PILARES) */
+        .pilares-v2 {
+            padding: 120px 0;
+        }
+
+        .section-title-lux {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title-lux h2 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-title-lux p {
+            color: var(--texto-dim);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-glass {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .glass-card {
+            background: rgba(15, 15, 23, 0.45);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--borda-glass);
+            padding: 48px 40px;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card .icon-wrap {
+            width: 64px;
+            height: 64px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--borda-premium);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 32px;
+            color: var(--gold-primary);
+        }
+
+        .glass-card .icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            display: block;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .glass-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .glass-card p {
+            font-size: 15px;
+            color: var(--texto-dim);
+            line-height: 1.7;
+        }
+
+        /* ⏳ TIMELINE DA MENTORIA */
+        .timeline-section {
+            padding: 120px 0;
+            background: rgba(10, 10, 15, 0.3);
+            border-top: 1px solid var(--borda-glass);
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold-premium), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 64px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--bg-deep);
+            border: 3px solid var(--gold-primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 10px var(--gold-primary);
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--bg-surface);
+            border: 1px solid var(--borda-glass);
+            padding: 32px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content h4 {
+            color: var(--gold-primary);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            color: var(--texto-dim);
+        }
+
+        /* 👨‍🏫 SEÇÃO MENTOR DE LUXO */
+        .mentor-v2 {
+            padding: 120px 0;
+            border-top: 1px solid var(--borda-glass);
+        }
+
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .mentor-frame {
+            position: relative;
+            border: 1px solid var(--borda-premium);
+            border-radius: 28px;
+            padding: 16px;
+            background: rgba(212, 175, 55, 0.02);
+        }
+
+        .mentor-placeholder {
+            width: 100%;
+            height: 500px;
+            background: #0e0e13;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--texto-dim);
+            font-weight: 500;
+            font-size: 15px;
+            border: 1px solid var(--borda-glass);
+        }
+
+        .mentor-info h2 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 8px;
+        }
+
+        .mentor-info h3 {
+            font-size: 18px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .mentor-info p {
+            font-size: 16px;
+            color: var(--texto-dim);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        /* ❓ FAQ MODERNO ACCORDION */
+        .faq-v2 {
+            padding: 120px 0;
+            border-top: 1px solid var(--borda-glass);
+        }
+
+        .faq-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(15, 15, 23, 0.4);
+            border: 1px solid var(--borda-glass);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item[open] {
+            border-color: var(--borda-premium);
+            background: rgba(15, 15, 23, 0.7);
+        }
+
+        .faq-trigger {
+            padding: 24px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-trigger::after {
+            content: "↓";
+            font-size: 16px;
+            color: var(--gold-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] .faq-trigger::after {
+            transform: rotate(-180deg);
+        }
+
+        .faq-content {
+            padding: 0 32px 24px 32px;
+            color: var(--texto-dim);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* 🏁 CTA FINAL DE ALTO IMPACTO */
+        .cta-final-v2 {
+            padding: 140px 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            border-top: 1px solid var(--borda-glass);
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-final-v2 h2 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .cta-final-v2 p {
+            font-size: 18px;
+            color: var(--texto-dim);
+            max-width: 640px;
+            margin: 0 auto 48px auto;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid var(--borda-glass);
+            text-align: center;
+            font-size: 14px;
+            color: var(--texto-dim);
+            background: #020204;
+        }
+
+        /* 📱 RESPONSIVIDADE COMPLETA */
+        @media (max-width: 1024px) {
+            .grid-hero {
+                grid-template-columns: 1fr;
+                gap: 56px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero .subtitulo {
+                margin: 0 auto 40px auto;
+            }
+
+            .hero-lux-card {
+                height: 400px;
+            }
+
+            .grid-glass {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mentor-grid {
+                grid-template-columns: 1fr;
+                gap: 56px;
+            }
+
+            .grid-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+
+            .timeline-container::before {
+                left: 24px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                margin-bottom: 40px;
+            }
+
+            .timeline-dot {
+                left: 24px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .grid-glass {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-final-v2 h2 {
+                font-size: 32px;
+            }
+
+            .faq-trigger {
+                padding: 20px;
+                font-size: 15px;
+            }
+
+            .faq-content {
+                padding: 0 20px 20px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#programa">Mentoria<span>DEV+</a></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#pilares">O Programa</a></li>
+                    <li><a href="#timeline">A Jornada</a></li>
+                    <li><a href="#mentor">O Mentor</a></li>
+                    <li><a href="#faq">Dúvidas</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/5583996866757?text=Olá!+Gostaria+de+agendar+meu+Diagnóstico+de+Carreira+DEV+."
+                target="_blank" class="btn-nav">Falar com o Mentor</a>
+        </div>
+    </header>
+
+    <section class="hero" id="programa">
+        <div class="container">
+            <div class="grid-hero">
+                <div class="hero-content">
+                    <span class="tag-lux">Programa de Aceleração de Carreira Tech</span>
+                    <h1>Chegou a hora de destravar o <span>próximo nível</span> da sua carreira em TI.</h1>
+                    <p class="subtitulo">Orientação direta, código limpo e foco em resultados reais. Nosso programa te leva ao próximo nível: 
+                        posicionamento, evolução técnica e inteligência de mercado.</p>
+
+                    <a href="https://wa.me/5583996866757?text=Olá!+Gostaria+de+agendar+meu+Diagnóstico+de+Carreira+DEV+."
+                        target="_blank" class="btn-premium-cta">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        Agendar meu Diagnóstico de Carreira Gratuito
+                    </a>
+                </div>
+
+                <div class="hero-art-container">
+                    <div class="hero-lux-card">
+                        <span class="hero-image-bg" aria-label="Daniel Brandão em ambiente profissional"></span>
+                        <div class="badge-floating badge-1">
+                            <svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></line>
+                            </svg>
+                            <span class="badge-text">Diagnóstico Personalizado</span>
+                        </div>
+                        <div class="badge-floating badge-2">
+                            <svg class="badge-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.22 11.23l-.22.15V16h-4v-2.62l-.22-.15C8.4 12.31 7 10.74 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.74-1.4 3.31-2.78 4.23z"></path>
+                            </svg>
+                            <span class="badge-text">Plano Estratégico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container">
+            <div class="grid-stats">
+                <div class="stat-item">
+                    <h2>+95%</h2>
+                    <p>Taxa de Aproveitamento</p>
+                </div>
+                <div class="stat-item">
+                    <h2>100%</h2>
+                    <p>Foco Prático e Direto</p>
+                </div>
+                <div class="stat-item">
+                    <h2>+90h</h2>
+                    <p>De Mentoria Aplicada</p>
+                </div>
+                <div class="stat-item">
+                    <h2>Individual</h2>
+                    <p>Diagnóstico Personalizado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pilares-v2" id="pilares">
+        <div class="container">
+            <div class="section-title-lux">
+                <h2>Os Pilares do Nosso Método</h2>
+                <p>Uma metodologia refinada estruturada para gerar impacto imediato no seu posicionamento.</p>
+            </div>
+
+            <div class="grid-glass">
+                <div class="glass-card">
+                    <div class="icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <circle cx="11" cy="11" r="6"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <h3>Diagnóstico Cirúrgico</h3>
+                    <p>Avaliamos friamente sua postura de mercado, LinkedIn e currículo para encontrar vulnerabilidades
+                        na sua imagem profissional.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="12" r="7"></circle>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="12" cy="12" r="1.5"></circle>
+                            <line x1="12" y1="2" x2="12" y2="5"></line>
+                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                            <line x1="2" y1="12" x2="5" y2="12"></line>
+                            <line x1="19" y1="12" x2="22" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Estratégia de Posicionamento</h3>
+                    <p>Aprenda a se portar, falar e liderar como um profissional sênior ou especialista altamente
+                        desejado por grandes marcas.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                            <polyline points="14 7 21 7 21 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Aceleração Real</h3>
+                    <p>Planos estratégicos sob medida para você aplicar em projetos reais e simulados, indicação para projetos como freelancer e processos seletivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-title-lux">
+                <h2>Sua Jornada de Aceleração</h2>
+                <p>Passo a passo estratégico projetado para o seu amadurecimento profissional em tecnologia.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Fase 01</h4>
+                        <h3>Diagnóstico Inicial</h3>
+                        <p>Alinhamento individual e mapeamento completo do cenário para travar gargalos imediatos na sua
+                            carreira.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Fase 02</h4>
+                        <h3>Sessão Estratégica</h3>
+                        <p>Focada na Reformulação da sua narrativa de mercado, LinkedIn de alto impacto e preparação para
+                            processos seletivos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Fase 03</h4>
+                        <h3>Onboarding no Programa</h3>
+                        <p>Apresentação do Plano de Ação e - caso faça sentido - encaminhamento para o <b>Programa de Aceleração de Carreira DEV+</b>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mentor-v2" id="mentor">
+        <div class="container">
+            <div class="mentor-grid">
+                <div class="mentor-frame">
+                    <div class="mentor-placeholder">
+                        <img src="img/dan perfil3-1.png" alt="Daniel Brandão em ambiente profissional" style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+                    </div>
+                </div>
+                <div class="mentor-info">
+                    <span class="tag-lux" style="margin-bottom:16px;">O Mentor</span>
+                    <h2>[Daniel Brandão]</h2>
+                    <h3>Especialista em Dados, Dev & Estrategista de Carreira</h3>
+                    <p>Com 20+ anos de vivência na área tech, com vasta experiência no ecossistema de TI como Dev Full Stack, Analista de Dados e BI, venho desenvolvendo abordagens
+                        para fazer desenvolvedores iniciantes se tornarem prontos para disputadar pelas melhores colocações na área tech.</p>
+                    <p>Com experiência por empresas como <strong>Ford</strong>, <strong>Porto Seguro</strong>, <strong>CODATA</strong> e <strong>Ambev</strong>, meu foco não está no código puramente, mas na arquitetura de soluções e no
+                        posicionamento de autoridade profissional necessário para alcançar uma posição no mercado.
+                        </p>
+                    <p>Meu foco nesse programa é te ajudar a identificar e explorar oportunidades de crescimento profissional de forma estratégica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-v2" id="faq">
+        <div class="container">
+            <div class="section-title-lux">
+                <h2>Dúvidas Frequentes</h2>
+            </div>
+
+            <div class="faq-wrapper">
+                <details class="faq-item">
+                    <summary class="faq-trigger">Como o diagnóstico vai me ajudar no curto prazo?</summary>
+                    <div class="faq-content">
+                        Logo na primeira sessão, identificamos os erros sutis que desclassificam você em triagens de
+                        grandes empresas desde o currículo ou travam suas chances de promoção interna.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-trigger">Preciso pagar algo para fazer o diagnóstico?</summary>
+                    <div class="faq-content">
+                        <strong>NADA!</strong> A conversa inicial via WhatsApp serve para validar seu atual momento de carreira. Caso seu
+                        perfil seja selecionado, agendamos o diagnóstico estratégico individual.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-trigger">Qual o formato da mentoria completa?</summary>
+                    <div class="faq-content">
+                        A aceleração ocorre através de encontros focados e consultivos, acompanhamento estratégico
+                        personalizado e feedbacks em tempo real de cenários corporativos reais. <br>Um acompanhamento que você não vê igual no mercado, com foco em resultados práticos e aplicáveis. 
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-trigger">O que preciso fazer para realizar o Diagnóstico e como ele funciona?</summary>
+                    <div class="faq-content">
+                        Basta clicar no botão aqui abaixo e responder ao Diagnóstico de Carreira. Ao responder, você será direcionado a falar comigo no WhatsApp e ali a gente vai avançar no seu diagnóstico de maneira personalizda.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final-v2">
+        <div class="container">
+            <h2>Não terceirize o futuro da sua carreira.</h2>
+            <p>Garanta hoje sua sessão estratégica individual diretamente no meu canal de atendimento privado.</p>
+            <a href="http://app.superdados.dev.br/diagnostico/dUifmRpFEEhisHElbft1b21jNS83"
+                target="_blank" class="btn-premium-cta">
+                Iniciar Diagnóstico via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Daniel Brandão. Powered by SuperDados. Todos os direitos reservados. | DanielBrandao.com.br | superdados.dev.br/dev</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
