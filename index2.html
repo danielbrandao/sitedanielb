@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Brandão — Tecnologia, Negócios & Desenvolvimento Humano</title>
+    <meta name="description"
+        content="Conectando tecnologia e conhecimento para transformar empresas e acelerar carreiras. Consultoria em IA, Dados e Mentoria Executiva.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
+        :root {
+            --bg-principal: #0D0D0D;
+            --bg-card: #171717;
+            --texto-puro: #FFFFFF;
+            --texto-secundario: #EAEAEA;
+            --texto-mutado: #8E8E93;
+            --destaque: #C8FF3D;
+            --destaque-rgb: 200, 255, 61;
+            --borda: rgba(255, 255, 255, 0.08);
+            --borda-foco: rgba(255, 255, 255, 0.2);
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Manrope', sans-serif;
+            --transicao: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-principal);
+            color: var(--texto-puro);
+            font-family: var(--fonte-corpo);
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .secao {
+            padding: 120px 0;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .tag-premium {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--destaque);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .titulo-secao {
+            font-family: var(--fonte-titulo);
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+        }
+
+        .titulo-secao em {
+            font-style: italic;
+        }
+
+        /* --- BOTÕES --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: var(--transicao);
+            cursor: pointer;
+        }
+
+        .btn-principal {
+            background-color: var(--destaque);
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(var(--destaque-rgb), 0.2);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--texto-puro);
+            border: 1px solid var(--borda);
+        }
+
+        .btn-secundario:hover {
+            border-color: var(--borda-foco);
+            background-color: rgba(255, 255, 255, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* --- HEADER / MENU --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            color: var(--texto-puro);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--texto-mutado);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transicao);
+        }
+
+        .nav-link:hover {
+            color: var(--texto-puro);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--texto-puro);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-conteudo {
+            z-index: 2;
+        }
+
+        .hero-manifesto {
+            font-family: var(--fonte-titulo);
+            font-size: 3.8rem;
+            line-height: 1.15;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-manifesto span {
+            display: block;
+        }
+
+        .hero-manifesto .destaque-serif {
+            font-style: italic;
+            color: var(--texto-secundario);
+        }
+
+        .hero-manifesto .conexao {
+            color: var(--destaque);
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-tag {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--texto-mutado);
+        }
+
+        .hero-botoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-imagem-container {
+            position: relative;
+            height: 600px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--borda);
+        }
+
+        .hero-imagem {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: var(--transicao);
+        }
+
+        .hero-imagem-container:hover .hero-imagem {
+            filter: grayscale(30%);
+            transform: scale(1.02);
+        }
+
+        /* Redes da hero */
+        .hero-redes-fixas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 0 0 1.5rem;
+            position: relative;
+            top: auto;
+            right: auto;
+        }
+
+        .hero-redes-fixas a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.55rem 0.9rem;
+            border: 1px solid var(--borda);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--texto-secundario);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transicao);
+        }
+
+        .hero-redes-fixas a:hover {
+            color: var(--destaque);
+            border-color: var(--destaque);
+            transform: translateY(-2px);
+        }
+
+        /* --- COMO POSSO AJUDAR (JORNADAS) --- */
+        .jornadas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .card-jornada {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            border-radius: 16px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+            transition: var(--transicao);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-jornada::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(var(--destaque-rgb), 0.02) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transicao);
+        }
+
+        .card-jornada:hover {
+            border-color: rgba(var(--destaque-rgb), 0.3);
+            transform: translateY(-5px);
+        }
+
+        .card-jornada:hover::before {
+            opacity: 1;
+        }
+
+        .jornada-topo h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .jornada-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .jornada-item {
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .card-jornada .btn-secundario {
+            align-self: flex-start;
+            margin-top: 2rem;
+            z-index: 2;
+        }
+
+        .card-jornada:hover .btn-secundario {
+            background-color: var(--destaque);
+            color: #000000;
+            border-color: var(--destaque);
+        }
+
+        /* --- IMPACTO --- */
+        .impacto-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .impacto-numeros {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem 2rem;
+        }
+
+        .contador-bloco {
+            border-left: 1px solid var(--borda);
+            padding-left: 1.5rem;
+        }
+
+        .contador-numero {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--texto-puro);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            font-feature-settings: "tnum";
+        }
+
+        .contador-numero span {
+            color: var(--destaque);
+        }
+
+        .contador-rotulo {
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- SOBRE (STORYTELLING) --- */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .sobre-narrativa {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--texto-secundario);
+        }
+
+        .sobre-narrativa p {
+            margin-bottom: 1.8rem;
+            font-weight: 300;
+        }
+
+        .sobre-narrativa p strong {
+            color: var(--texto-puro);
+            font-weight: 500;
+        }
+
+        .sobre-imagem-container {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--borda);
+            height: 550px;
+        }
+
+        .sobre-imagem {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        /* --- ÁREAS DE ATUAÇÃO (COMPOSIÇÃO BENTO) --- */
+        .composicao-areas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .area-node {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transicao);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 160px;
+        }
+
+        .area-node:hover {
+            border-color: var(--destaque);
+            transform: scale(1.03);
+            background: rgba(200, 255, 61, 0.02);
+        }
+
+        .area-node-centro {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: radial-gradient(circle at center, rgba(var(--destaque-rgb), 0.08) 0%, transparent 70%), var(--bg-card);
+            border: 1px solid rgba(var(--destaque-rgb), 0.2);
+        }
+
+        .area-node-centro h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.2rem;
+            font-weight: 400;
+        }
+
+        .area-node h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--texto-secundario);
+        }
+
+        /* --- PROGRAMAS PREMIUM --- */
+        .programas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .card-programa {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 320px;
+            transition: var(--transicao);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card-programa:hover {
+            border-color: var(--borda-foco);
+            transform: translateY(-4px);
+        }
+
+        .programa-header h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .programa-header p {
+            color: var(--texto-mutado);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .programa-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .programa-seta {
+            color: var(--destaque);
+            transition: var(--transicao);
+        }
+
+        .card-programa:hover .programa-seta {
+            transform: translateX(5px);
+        }
+
+        /* --- EMPRESAS --- */
+        .empresas-faixa {
+            background: rgba(23, 23, 23, 0.4);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--borda);
+            text-align: center;
+        }
+
+        .empresas-faixa p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--texto-mutado);
+            margin-bottom: 2.5rem;
+        }
+
+        .logos-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .logo-item {
+            font-family: var(--fonte-corpo);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--texto-mutado);
+            filter: grayscale(100%);
+            transition: var(--transicao);
+            cursor: default;
+        }
+
+        .logo-item:hover {
+            filter: grayscale(0%);
+            color: var(--texto-puro);
+        }
+
+        /* --- CONTEÚDO --- */
+        .conteudo-abas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bloco-conteudo {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transicao);
+        }
+
+        .bloco-conteudo:hover {
+            border-color: var(--borda-foco);
+        }
+
+        .plataforma-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--destaque);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .feed-item {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            display: block;
+        }
+
+        .feed-item h5 {
+            font-size: 0.95rem;
+            color: var(--texto-secundario);
+            font-weight: 400;
+            line-height: 1.4;
+            transition: var(--transicao);
+        }
+
+        .feed-item:hover h5 {
+            color: var(--texto-puro);
+        }
+
+        /* --- REDES SOCIAIS --- */
+        .redes-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card-rede {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transicao);
+        }
+
+        .card-rede:hover {
+            border-color: var(--destaque);
+            transform: translateY(-3px);
+        }
+
+        .card-rede span {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* --- CTA FINAL --- */
+        .cta-final {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(200, 255, 61, 0.03) 0%, transparent 60%), var(--bg-principal);
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-titulo {
+            font-family: var(--fonte-titulo);
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitulo {
+            color: var(--texto-mutado);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 3.5rem;
+            font-weight: 300;
+        }
+
+        .cta-botoes {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- RODAPÉ --- */
+        .rodape {
+            padding: 80px 0 40px 0;
+            background: #080808;
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+        }
+
+        .rodape-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(2, 1fr);
+            gap: 4rem;
+            margin-bottom: 60px;
+        }
+
+        .rodape-marca h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            color: var(--texto-puro);
+            margin-bottom: 1rem;
+        }
+
+        .rodape-coluna h5 {
+            color: var(--texto-puro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rodape-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rodape-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .rodape-links a {
+            color: var(--texto-mutado);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .rodape-links a:hover {
+            color: var(--texto-puro);
+        }
+
+        .rodape-links-social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .rodape-links-social li {
+            margin-bottom: 0;
+        }
+
+        .rodape-links-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--borda);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--texto-mutado);
+            transition: var(--transicao);
+        }
+
+        .rodape-links-social a:hover {
+            color: var(--texto-puro);
+            border-color: var(--destaque);
+            transform: translateY(-2px);
+        }
+
+        .rodape-links-social svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .rodape-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--borda);
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1024px) {
+
+            .hero-grid,
+            .sobre-grid,
+            .impacto-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-imagem-container,
+            .sobre-imagem-container {
+                height: 450px;
+            }
+
+            .hero-redes-fixas {
+                position: static;
+                margin-bottom: 2rem;
+            }
+
+            .composicao-areas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .area-node-centro {
+                grid-column: span 2;
+            }
+
+            .programas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .conteudo-abas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .redes-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-menu,
+            .nav-right .btn {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-manifesto {
+                font-size: 2.6rem;
+            }
+
+            .titulo-secao {
+                font-size: 2.2rem;
+            }
+
+            .jornadas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-titulo {
+                font-size: 2.5rem;
+            }
+
+            .programas-grid,
+            .conteudo-abas,
+            .redes-grid,
+            .rodape-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rodape-grid {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV / HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">db.</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#jornadas" class="nav-link">Jornadas</a></li>
+                    <li><a href="#programas" class="nav-link">Programas</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#conteudo" class="nav-link">Conteúdos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <a href="#contato" class="btn btn-secundario"
+                    style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Agendar conversa</a>
+                <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HERO -->
+    <section class="hero container">
+        <div class="hero-grid">
+            <div class="hero-conteudo">
+                <h1 class="hero-manifesto">
+                    <span>Tecnologia muda empresas.</span>
+                    <span class="destaque-serif">Conhecimento muda pessoas.</span>
+                    <span class="conexao">Meu trabalho conecta os dois.</span>
+                </h1>
+                <!--div class="hero-tags">
+                    <span class="hero-tag">Professor Universitário</span>
+                    <span class="hero-tag">Consultor Tech</span>
+                    <span class="hero-tag">Especialista em IA & Dados</span>
+                    <span class="hero-tag">Mentor de Carreira</span>
+                    <span class="hero-tag">Tech Manager</span>
+                </div-->
+                <div class="hero-redes-fixas">
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">Instagram</a>
+                </div>
+                <div class="hero-botoes">
+                    <a href="#jornadas" class="btn btn-principal">Conheça meu trabalho</a>
+                    <a href="#contato" class="btn btn-secundario">Agendar conversa</a>
+                </div>
+            </div>
+            <div class="hero-imagem-container">
+                <!-- Imagem conceitual e corporativa de Daniel Brandão -->
+                <img src="mentoria/img/Daniel office.png"
+                    alt="Daniel Brandão" class="hero-imagem">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. COMO POSSO AJUDAR (JORNADAS) -->
+    <section id="jornadas" class="secao container">
+        <span class="tag-premium">Direcionamento</span>
+        <h2 class="titulo-secao">Como posso <em>ajudar</em> na sua evolução</h2>
+
+        <div class="jornadas-grid">
+            <!-- Card 1 -->
+            <div class="card-jornada">
+                <div class="jornada-topo">
+                    <h3>Quero aprender</h3>
+                    <ul class="jornada-lista">
+                        <li class="jornada-item">Graduação</li>
+                        <li class="jornada-item">Pós-Graduação</li>
+                        <li class="jornada-item">Cursos Extensão</li>
+                        <li class="jornada-item">Treinamentos</li>
+                    </ul>
+                </div>
+                <a href="#contato" class="btn btn-secundario">Conhecer</a>
+            </div>
+            <!-- Card 2 -->
+            <div class="card-jornada">
+                <div class="jornada-topo">
+                    <h3>Tenho uma empresa</h3>
+                    <ul class="jornada-lista">
+                        <li class="jornada-item">Consultoria Estratégica</li>
+                        <li class="jornada-item">Inteligência Artificial</li>
+                        <li class="jornada-item">Cultura de Dados</li>
+                        <li class="jornada-item">Transformação Digital</li>
+                    </ul>
+                </div>
+                <a href="#contato" class="btn btn-secundario">Saiba mais</a>
+            </div>
+            <!-- Card 3 -->
+            <div class="card-jornada">
+                <div class="jornada-topo">
+                    <h3>Quero evoluir</h3>
+                    <ul class="jornada-lista">
+                        <li class="jornada-item">Mentoria DEV+</li>
+                        <li class="jornada-item">Plano de Carreira</li>
+                        <li class="jornada-item">Arquitetura Java</li>
+                        <li class="jornada-item">Liderança Técnica</li>
+                    </ul>
+                </div>
+                <a href="#contato" class="btn btn-secundario">Entrar</a>
+            </div>
+            <!-- Card 4 -->
+            <div class="card-jornada">
+                <div class="jornada-topo">
+                    <h3>Tenho um projeto</h3>
+                    <ul class="jornada-lista">
+                        <li class="jornada-item">Desenvolvimento Core</li>
+                        <li class="jornada-item">Arquitetura de Softwares</li>
+                        <li class="jornada-item">Business Intelligence</li>
+                        <li class="jornada-item">Sistemas Escalonáveis</li>
+                    </ul>
+                </div>
+                <a href="#contato" class="btn btn-secundario">Ver projetos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. IMPACTO (MÉTRICAS) -->
+    <section class="secao container">
+        <div class="impacto-layout">
+            <div>
+                <span class="tag-premium">Métricas de Valor</span>
+                <h2 class="titulo-secao" style="margin-bottom: 0;">Mais de duas décadas transformando pessoas e
+                    corporações através da tecnologia.</h2>
+            </div>
+            <div class="impacto-numeros">
+                <div class="contador-bloco">
+                    <div class="contador-numero" data-alvo="20">0<span>+</span></div>
+                    <div class="contador-rotulo">Anos de experiência</div>
+                </div>
+                <div class="contador-bloco">
+                    <div class="contador-numero" data-alvo="10000">0<span>+</span></div>
+                    <div class="contador-rotulo">Alunos Formados</div>
+                </div>
+                <div class="contador-bloco">
+                    <div class="contador-numero" data-alvo="80">0<span>+</span></div>
+                    <div class="contador-rotulo">Empresas Atendidas</div>
+                </div>
+                <div class="contador-bloco">
+                    <div class="contador-numero" data-alvo="500">0<span>+</span></div>
+                    <div class="contador-rotulo">Profissionais Mentorados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SOBRE (STORYTELLING) -->
+    <section id="sobre" class="secao container">
+        <div class="sobre-grid">
+            <div class="sobre-conteudo">
+                <span class="tag-premium">Sobre mim</span>
+                <h2 class="titulo-secao">Por trás do ecossistema</h2>
+                <div class="sobre-narrativa">
+                    <p>Profissional Tech há 20 anos, comecei escrevendo código puro. Vi linhas lógicas ganharem escopo, automatizarem processos e
+                        gerarem eficiências inegáveis. Mas logo descobri algo mais profundo: <strong>tecnologia,
+                            sozinha, não transforma empresas. São as pessoas.</strong></p>
+                    <p>Ao longo de duas décadas, naveguei por todas as frentes cruciais do mercado. Atuei no
+                        <strong>desenvolvimento de software</strong> de alta performance, destrinchei arquiteturas complexas em <strong>análise
+                        de dados</strong>, assumi a responsabilidade da <strong>liderança técnica e da gestão de TI</strong>.</p>
+                    <p>Essa visão holística me levou naturalmente para onde estou hoje: exatamente na intersecção entre
+                        o <strong>desenvolvimento tecnológico robusto, o direcionamento estratégico de negócios e a
+                            educação de alto nível.</strong></p>
+                </div>
+            </div>
+            <div class="sobre-imagem-container">
+                <img src="mentoria/img/dan perfil3-1.png"
+                    alt="Daniel em Consultoria Executiva" class="sobre-imagem">
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. EMPRESAS -->
+    <div class="empresas-faixa">
+        <div class="container">
+            <p>Marcas e Organizações que já atuei</p>
+            <div class="logos-wrapper">
+                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford" width="160px"></div>
+                <div class="logo-item"><img src="https://maturidadeanalitica.com.br/wp-content/uploads/2025/12/marca-fabwork.png" alt="Fabwork" width="150px"></div>
+                <div class="logo-item"><img src="https://www.abcdacomunicacao.com.br/wp-content/uploads/CBS_preto.png" alt="Conquer" width="200px"></div>
+                <div class="logo-item"><img src="https://superdados.dev.br/static/imgs/logo_iel.png" alt="FIEPB" width="200px"></div>
+                <div class="logo-item"><img src="https://www.globalbox.com.br/wp-content/uploads/2025/01/cruzeiro-do-sul-educacional.png" alt="Cruzeiro do Sul" width="200px"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ÁREAS DE ATUAÇÃO -->
+    <section class="secao container">
+        <span class="tag-premium">Competências</span>
+        <h2 class="titulo-secao">Domínios de <em>Atuação</em></h2>
+
+        <div class="composicao-areas">
+            <div class="area-node area-node-centro">
+                <h3>Daniel Brandão</h3>
+            </div>
+            <div class="area-node">
+                <h4>Inteligência Artificial</h4>
+            </div>
+            <div class="area-node">
+                <h4>Dados Estratégicos</h4>
+            </div>
+            <div class="area-node">
+                <h4>Educação Executiva</h4>
+            </div>
+            <div class="area-node">
+                <h4>Consultoria Tech</h4>
+            </div>
+            <div class="area-node">
+                <h4>Arquitetura Projetos</h4>
+            </div>
+            <div class="area-node">
+                <h4>Liderança de Times</h4>
+            </div>
+            <div class="area-node">
+                <h4>Mentoria Premium</h4>
+            </div>
+            <div class="area-node">
+                <h4>Tecnologia Pura</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. PROGRAMAS -->
+    <section class="secao container" id="programas">
+        <span class="tag-premium">Soluções Atuais</span>
+        <h2 class="titulo-secao">Programas e Ecossistemas</h2>
+
+        <div class="programas-grid">
+            <a href="#contato" class="card-programa">
+                <div class="programa-header">
+                    <h3>Mentoria DEV+</h3>
+                    <p>Aceleração de carreira técnica para desenvolvedores que buscam posições de liderança e
+                        arquitetura sênior.</p>
+                </div>
+                <div class="programa-footer">
+                    <span>Saber mais</span>
+                    <span class="programa-seta">→</span>
+                </div>
+            </a>
+            <a href="#contato" class="card-programa">
+                <div class="programa-header">
+                    <h3>Consultoria Tech</h3>
+                    <p>Desenho de estratégias de IA, modelagem de dados e governança tecnológica para médias e grandes
+                        corporações.</p>
+                </div>
+                <div class="programa-footer">
+                    <span>Saber mais</span>
+                    <span class="programa-seta">→</span>
+                </div>
+            </a>
+            <a href="#contato" class="card-programa">
+                <div class="programa-header">
+                    <h3>Treinamentos in-company</h3>
+                    <p>Capacitação imersiva de equipes técnicas e corporativas nas tecnologias mais disruptivas do
+                        mercado.</p>
+                </div>
+                <div class="programa-footer">
+                    <span>Saber mais</span>
+                    <span class="programa-seta">→</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 8. CONTEÚDO -->
+    <section id="conteudo" class="secao container">
+        <span class="tag-premium">Knowledge Share</span>
+        <h2 class="titulo-secao">Conteúdos & Insights</h2>
+
+        <div class="conteudo-abas">
+            <div class="bloco-conteudo">
+                <span class="plataforma-badge">YouTube</span>
+                <a href="#" class="feed-item">
+                    <h5>Como a IA generativa está mudando a arquitetura de software moderna em 2026.</h5>
+                </a>
+                <a href="#" class="feed-item">
+                    <h5>Migração de dados legacy para ambientes distribuídos sem downtime.</h5>
+                </a>
+            </div>
+            <div class="bloco-conteudo">
+                <span class="plataforma-badge">LinkedIn</span>
+                <a href="#" class="feed-item">
+                    <h5>O papel do CTO moderno: equilibrar o código com o report financeiro da mesa executiva.</h5>
+                </a>
+            </div>
+            <div class="bloco-conteudo">
+                <span class="plataforma-badge">Artigos</span>
+                <a href="#" class="feed-item">
+                    <h5>Mapeamento estruturado de carreiras DEV para o mercado europeu e americano.</h5>
+                </a>
+            </div>
+            <div class="bloco-conteudo">
+                <span class="plataforma-badge">Materiais</span>
+                <a href="#" class="feed-item">
+                    <h5>Framework e Playbook Gratuito de Arquitetura Limpa em microsserviços Java.</h5>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. REDES SOCIAIS DEDICADAS -->
+    <section class="secao container">
+        <span class="tag-premium">Conexão Direta</span>
+        <h2 class="titulo-secao">Hub de Canais Oficiais</h2>
+        <div class="redes-grid">
+            <a href="#" class="card-rede"><span>LinkedIn</span></a>
+            <a href="#" class="card-rede"><span>Instagram</span></a>
+            <a href="#" class="card-rede"><span>GitHub</span></a>
+            <a href="#" class="card-rede"><span>YouTube</span></a>
+            <a href="#" class="card-rede"><span>WhatsApp</span></a>
+            <a href="#" class="card-rede"><span>Email</span></a>
+        </div>
+    </section>
+
+    <!-- 10. CTA FINAL -->
+    <section id="contato" class="secao cta-final">
+        <div class="container cta-container">
+            <h2 class="cta-titulo">Qual é o seu próximo desafio?</h2>
+            <p class="cta-subtitulo">Se você busca evoluir sua carreira de tecnologia estruturadamente, transformar a
+                infraestrutura de dados da sua empresa ou desenhar arquiteturas complexas, vamos alinhar as visões.</p>
+            <div class="cta-botoes">
+                <a href="#" class="btn btn-principal">Quero um serviço</a>
+                <a href="#" class="btn btn-secundario">Quero Aprender (mentoria/cursos)</a>
+                <a href="#" class="btn btn-secundario"
+                    style="border-color: var(--destaque); color: var(--destaque);">Agendar via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container rodape-grid">
+            <div class="rodape-marca">
+                <h4>Daniel Brandão</h4>
+                <p>Tecnologia, Negócios e Desenvolvimento Humano integrados em alto nível.</p>
+            </div>
+            <div class="rodape-coluna">
+                <h5>Navegação</h5>
+                <ul class="rodape-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#jornadas">Mentoria</a></li>
+                    <li><a href="#programas">Consultoria</a></li>
+                    <li><a href="#conteudo">Conteúdos</a></li>
+                </ul>
+            </div>
+            <div class="rodape-coluna">
+                <h5>Canais</h5>
+                <ul class="rodape-links rodape-links-social">
+                    <li><a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5A1.56 1.56 0 1 0 6.94 5.38a1.56 1.56 0 0 0 0 3.12ZM5.5 9.5h2.88V18H5.5zM10.06 9.5h2.76v1.16h.04c.38-.72 1.31-1.48 2.7-1.48 2.89 0 3.42 1.9 3.42 4.37V18h-2.88v-7.58c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.89 1.96-2.89 3.98V18H10.06z"></path></svg>
+                    </a></li>
+                    <li><a href="#" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.04c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.43-4.04-1.43-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.84 2.8 1.31 3.48 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.24a11.4 11.4 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"></path></svg>
+                    </a></li>
+                    <li><a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2zm5.2-3.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z"></path></svg>
+                    </a></li>
+                    <li><a href="#" aria-label="Email" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.2-8 5.3-8-5.3V6l8 5.3L20 6z"></path></svg>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container rodape-bottom">
+            <p>&copy; 2026 Daniel Brandão. Todos os direitos reservados.</p>
+            <p>Designed for SuperDados.</p>
+        </div>
+    </footer>
+
+    <!-- INTERAÇÕES INTERNAS (JS PURO) -->
+    <script>
+        // Animação Progressiva de Números (Métricas de Impacto)
+        const contadores = document.querySelectorAll('.contador-numero');
+
+        const animarContador = (contador) => {
+            const alvo = +contador.getAttribute('data-alvo');
+            const incremento = alvo / 50; // Ajuste de velocidade da contagem
+
+            const atualizarValor = () => {
+                const valorAtual = +contador.innerText.replace('+', '');
+                if (valorAtual < alvo) {
+                    contador.innerHTML = `${Math.ceil(valorAtual + incremento)}<span>+</span>`;
+                    setTimeout(atualizarValor, 30);
+                } else {
+                    contador.innerHTML = `${alvo}<span>+</span>`;
+                }
+            };
+            atualizarValor();
+        };
+
+        // Intersection Observer para disparar contagem apenas quando visível na tela
+        const observerOpcoes = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animarContador(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOpcoes);
+
+        contadores.forEach(contador => observer.observe(contador));
+
+        // Controle Responsivo Simples de Menu Lateral (Mobile)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '80px';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.background = 'var(--bg-principal)';
+                navMenu.style.padding = '2rem';
+                navMenu.style.borderBottom = '1px solid var(--borda)';
+            }
+        });
+    </script>
+</body>
+
+</html>
