@@ -465,23 +465,54 @@
         }
 
         .area-node {
+            position: relative;
+            overflow: hidden;
             background: var(--bg-card);
             border: 1px solid var(--borda);
             border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
+            padding: 1.6rem;
+            text-align: left;
             transition: var(--transicao);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 160px;
+        }
+
+        .area-node::before {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            top: -56px;
+            right: -34px;
+            border: 1px solid rgba(var(--destaque-rgb), 0.2);
+            border-radius: 50%;
+            transition: var(--transicao);
+        }
+
+        .area-node::after {
+            content: attr(data-index);
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            color: var(--destaque);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
         }
 
         .area-node:hover {
             border-color: var(--destaque);
-            transform: scale(1.03);
-            background: rgba(200, 255, 61, 0.02);
+            transform: translateY(-6px);
+            background: linear-gradient(145deg, rgba(var(--destaque-rgb), 0.1), var(--bg-card) 62%);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+        }
+
+        .area-node:hover::before {
+            transform: scale(1.35);
+            border-color: rgba(var(--destaque-rgb), 0.5);
         }
 
         .area-node-centro {
@@ -498,9 +529,21 @@
         }
 
         .area-node h4 {
+            position: relative;
+            z-index: 1;
+            max-width: 13rem;
             font-size: 1.1rem;
             font-weight: 500;
             color: var(--texto-secundario);
+        }
+
+        .area-node p {
+            position: relative;
+            z-index: 1;
+            margin-top: 0.65rem;
+            color: var(--texto-mutado);
+            font-size: 0.82rem;
+            line-height: 1.5;
         }
 
         /* --- PROGRAMAS PREMIUM --- */
@@ -1086,29 +1129,37 @@
             <div class="area-node area-node-centro">
                 <h3>Daniel Brandão</h3>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="01">
                 <h4>Inteligência Artificial</h4>
+                <p>Estratégia, aplicação e inovação com IA.</p>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="02">
                 <h4>Dados Estratégicos</h4>
+                <p>Decisões melhores a partir de dados confiáveis.</p>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="03">
                 <h4>Educação Executiva</h4>
+                <p>Conhecimento aplicado para times e negócios.</p>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="04">
                 <h4>Consultoria Tech</h4>
+                <p>Direção técnica para desafios complexos.</p>
             </div>
-            <div class="area-node">
-                <h4>Arquitetura Projetos</h4>
+            <div class="area-node" data-index="05">
+                <h4>Gestão e liderança tech</h4>
+                <p>Times alinhados, execução consistente e impacto.</p>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="06">
                 <h4>Liderança de Times</h4>
+                <p>Desenvolvimento humano com foco em performance.</p>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="07">
                 <h4>Mentoria Premium</h4>
+                <p>Clareza e próximos passos para sua carreira.</p>
             </div>
-            <div class="area-node">
+            <div class="area-node" data-index="08">
                 <h4>Tecnologia Pura</h4>
+                <p>Software robusto, simples e preparado para crescer.</p>
             </div>
         </div>
     </section>
