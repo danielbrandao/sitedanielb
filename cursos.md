@@ -12,7 +12,7 @@ Para adicionar ou atualizar um curso, copie este bloco e altere os quatro campos
 - TITULO: PPD: Portfolio do Projeto ao Deploy
 - CATEGORIA: Workshop
 - DESCRICAO: Aprenda a publicar seu portfolio e deixar seus projetos em nuvem, pronto para serem analisar e avaliados por times de recrutamento e seleção, de maneira Profissional.
-- LINK: https://superdados.dev.br/cursos/Portfolio
+- LINK: https://superdados.dev.br/cursos/portfolio
 
 ## CURSO
 - TITULO: Desenvolvimento Web Full Stack
