@@ -158,6 +158,21 @@
             box-shadow: 0 0 8px var(--gold-primary);
         }
 
+        .tag-lux2 {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.06);
+            color: var(--gold-light);
+            border: 0px solid var(--borda-premium);
+            padding: 2px 4px;
+            border-radius: 0px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
         .hero h1 {
             font-size: 54px;
             font-weight: 800;
@@ -670,8 +685,8 @@
         }
 
         .faq-trigger::after {
-            content: "�?"";
-            font-size: 16px;
+            content: "�?" ";
+ font-size: 16px;
             color: var(--gold-primary);
             transition: transform 0.3s ease;
         }
