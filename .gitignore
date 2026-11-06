@@ -1,0 +1,45 @@
+# ============================================================================
+# VARIÁVEIS DE AMBIENTE E CREDENCIAIS SECRETAS (ASAAS, PIXELS, CHAVES)
+# ============================================================================
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+.env.example
+*.env
+
+# ============================================================================
+# ARQUIVOS DE CONFIGURAÇÃO LOCAL, CHAVES E DOCUMENTOS DE BRIEFING/INSTRUÇÃO
+# ============================================================================
+config.local.*
+*.config.local.*
+secrets.*
+*.secret
+*.key
+*.pem
+mentoria/INTEGRACAO_COMERCIAL.md
+mentoria/mentoria.md
+mentoria/mentoria2.md
+mentoria/create_placeholders.py
+
+# ============================================================================
+# DEPENDÊNCIAS E DIRETÓRIOS DE DEPLOY / SERVERLESS
+# ============================================================================
+node_modules/
+.vercel/
+.netlify/
+dist/
+build/
+
+# ============================================================================
+# ARQUIVOS DE SISTEMA E IDEs
+# ============================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+

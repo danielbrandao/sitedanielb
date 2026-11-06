@@ -1,0 +1,28 @@
+# Variáveis de ambiente e credenciais
+.env
+.env.*
+.env.local
+.env.production
+.env.example
+*.env
+
+# Configurações locais, chaves e documentos internos de instrução
+config.local.*
+*.config.local.*
+secrets.*
+*.secret
+*.key
+*.pem
+INTEGRACAO_COMERCIAL.md
+mentoria.md
+mentoria2.md
+create_placeholders.py
+
+# Deploy, dependências e sistema
+node_modules/
+.vercel/
+.netlify/
+.DS_Store
+Thumbs.db
+*.log
+
